@@ -109,7 +109,7 @@ async function main() {
     const feats = r.features.length
       ? `<div class="tags">${r.features.map(f => `<span class="tag" title="${esc(f.code)}">${esc(f.zh || f.code)}</span>`).join('')}</div>`
       : '';
-    return `<article class="store-card" data-town="${esc(r.townZh)}" data-search="${esc([r.storeNo, r.nameZh, r.nameEn, r.addressZh, r.addressEn, r.districtZh, r.districtEn].join(' ').toLowerCase())}">
+    return `<article id="store-${esc(r.storeNo)}" class="store-card" data-town="${esc(r.townZh)}" data-search="${esc([r.storeNo, r.nameZh, r.nameEn, r.addressZh, r.addressEn, r.districtZh, r.districtEn].join(' ').toLowerCase())}">
   <div class="card-head">
     <span class="store-no">${esc(r.storeNo)}</span>
     <div class="names">
@@ -149,6 +149,12 @@ async function main() {
 
   const towns = [...new Set(records.map(r => r.townZh))].filter(Boolean);
 
+  // 左側店號索引：依店號升序，每行由左而右呈現「店號 / 店名 / 地區」
+  const indexRows = [...records]
+    .sort((a, b) => Number(a.storeNo) - Number(b.storeNo))
+    .map(r => `<li><a href="#store-${esc(r.storeNo)}"><span class="ix-no">${esc(r.storeNo)}</span><span class="ix-name">${esc(r.nameZh)}</span><span class="ix-town">${esc(r.townZh)}</span></a></li>`)
+    .join('\n');
+
   const html = `<!DOCTYPE html>
 <html lang="zh-HK">
 <head>
@@ -165,7 +171,16 @@ header { max-width:1100px; margin:0 auto 1.25rem; }
 h1 { font-size:1.5rem; color:var(--primary); }
 h1 .en-title { font-size:1rem; color:var(--muted); font-weight:400; }
 .sub { color:var(--muted); font-size:.84rem; margin-top:.3rem; }
-main { max-width:1100px; margin:0 auto; }
+.layout { display:flex; gap:1.25rem; max-width:1280px; margin:0 auto; align-items:flex-start; }
+main { flex:1; min-width:0; }
+.sidebar { position:sticky; top:1rem; flex:0 0 240px; max-height:calc(100vh - 2rem); overflow-y:auto; background:var(--card); border:1px solid var(--border); border-radius:.5rem; padding:.7rem .6rem; }
+.sidebar h3 { font-size:.85rem; color:var(--accent); margin-bottom:.5rem; padding-bottom:.35rem; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:baseline; }
+.index { list-style:none; display:flex; flex-direction:column; gap:.1rem; }
+.index a { display:grid; grid-template-columns:44px 1fr auto; gap:.35rem; align-items:baseline; padding:.28rem .35rem; border-radius:.25rem; text-decoration:none; color:var(--fg); font-size:.8rem; }
+.index a:hover, .index a:focus { background:var(--tag); }
+.ix-no { font-weight:700; color:var(--primary); font-variant-numeric:tabular-nums; }
+.ix-name { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.ix-town { color:var(--muted); font-size:.7rem; white-space:nowrap; }
 .filters { position:sticky; top:0; z-index:10; background:var(--bg); border:1px solid var(--border); border-radius:.5rem; padding:.8rem .9rem; margin-bottom:1.25rem; display:flex; flex-wrap:wrap; gap:.7rem; align-items:flex-end; box-shadow:0 2px 8px rgba(0,0,0,.06); }
 .filters label { display:flex; flex-direction:column; gap:.2rem; font-size:.76rem; color:var(--muted); }
 .filters select, .filters input { background:var(--card); color:var(--fg); border:1px solid var(--border); border-radius:.35rem; padding:.38rem .5rem; font-size:.88rem; min-width:150px; }
@@ -196,6 +211,11 @@ main { max-width:1100px; margin:0 auto; }
 .links a:hover { text-decoration:underline; }
 footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78rem; border-top:1px solid var(--border); padding-top:.7rem; }
 @media (max-width:680px) { .cards { grid-template-columns:1fr; } }
+@media (max-width:900px) {
+  .layout { display:block; }
+  .sidebar { position:static; flex:none; max-height:none; margin-bottom:1rem; }
+  .index { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); }
+}
 </style>
 </head>
 <body>
@@ -203,6 +223,13 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
   <h1>屈臣氏酒窖 分店地址 <span class="en-title">Watsons Wine Store Finder</span></h1>
   <div class="sub">資料來源：屈臣氏酒窖官方網站 store finder・資料更新：${dataUpdated}・共 ${records.length} 間分店</div>
 </header>
+<div class="layout">
+<aside class="sidebar">
+  <h3>店號索引 <span class="count">${records.length}</span></h3>
+  <ol class="index">
+${indexRows}
+  </ol>
+</aside>
 <main>
 <div class="filters">
   <label>地區
@@ -222,6 +249,7 @@ ${towns.map(t => {
 </div>
 ${sections.join('\n')}
 </main>
+</div>
 <footer>本頁資料自動抓取自屈臣氏酒窖官方網站，僅供參考；實際營業時間以官方為準。店名與地址為中英雙語，其餘欄位採用繁體中文頁資料。<span id="load-time"></span></footer>
 <script>
 (function () {
@@ -231,6 +259,7 @@ ${sections.join('\n')}
   var countEl = document.getElementById('filter-count');
   var cards = Array.prototype.slice.call(document.querySelectorAll('.store-card'));
   var towns = Array.prototype.slice.call(document.querySelectorAll('.town'));
+  var indexItems = Array.prototype.slice.call(document.querySelectorAll('.index li'));
   var total = cards.length;
 
   // 本頁載入時間由前端動態產生，不寫入 HTML，避免污染變更偵測
@@ -249,6 +278,13 @@ ${sections.join('\n')}
     towns.forEach(function (t) {
       var any = Array.prototype.some.call(t.querySelectorAll('.store-card'), function (x) { return x.style.display !== 'none'; });
       t.style.display = any ? '' : 'none';
+    });
+    // 左側店號索引跟隨篩選同步顯示
+    indexItems.forEach(function (li) {
+      var a = li.querySelector('a');
+      if (!a) return;
+      var target = document.querySelector(a.getAttribute('href'));
+      li.style.display = (target && target.style.display !== 'none') ? '' : 'none';
     });
     countEl.textContent = '顯示 ' + shown + ' / ' + total + ' 間';
   }

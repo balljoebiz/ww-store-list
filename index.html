@@ -14,7 +14,16 @@ header { max-width:1100px; margin:0 auto 1.25rem; }
 h1 { font-size:1.5rem; color:var(--primary); }
 h1 .en-title { font-size:1rem; color:var(--muted); font-weight:400; }
 .sub { color:var(--muted); font-size:.84rem; margin-top:.3rem; }
-main { max-width:1100px; margin:0 auto; }
+.layout { display:flex; gap:1.25rem; max-width:1280px; margin:0 auto; align-items:flex-start; }
+main { flex:1; min-width:0; }
+.sidebar { position:sticky; top:1rem; flex:0 0 240px; max-height:calc(100vh - 2rem); overflow-y:auto; background:var(--card); border:1px solid var(--border); border-radius:.5rem; padding:.7rem .6rem; }
+.sidebar h3 { font-size:.85rem; color:var(--accent); margin-bottom:.5rem; padding-bottom:.35rem; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:baseline; }
+.index { list-style:none; display:flex; flex-direction:column; gap:.1rem; }
+.index a { display:grid; grid-template-columns:44px 1fr auto; gap:.35rem; align-items:baseline; padding:.28rem .35rem; border-radius:.25rem; text-decoration:none; color:var(--fg); font-size:.8rem; }
+.index a:hover, .index a:focus { background:var(--tag); }
+.ix-no { font-weight:700; color:var(--primary); font-variant-numeric:tabular-nums; }
+.ix-name { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.ix-town { color:var(--muted); font-size:.7rem; white-space:nowrap; }
 .filters { position:sticky; top:0; z-index:10; background:var(--bg); border:1px solid var(--border); border-radius:.5rem; padding:.8rem .9rem; margin-bottom:1.25rem; display:flex; flex-wrap:wrap; gap:.7rem; align-items:flex-end; box-shadow:0 2px 8px rgba(0,0,0,.06); }
 .filters label { display:flex; flex-direction:column; gap:.2rem; font-size:.76rem; color:var(--muted); }
 .filters select, .filters input { background:var(--card); color:var(--fg); border:1px solid var(--border); border-radius:.35rem; padding:.38rem .5rem; font-size:.88rem; min-width:150px; }
@@ -45,6 +54,11 @@ main { max-width:1100px; margin:0 auto; }
 .links a:hover { text-decoration:underline; }
 footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78rem; border-top:1px solid var(--border); padding-top:.7rem; }
 @media (max-width:680px) { .cards { grid-template-columns:1fr; } }
+@media (max-width:900px) {
+  .layout { display:block; }
+  .sidebar { position:static; flex:none; max-height:none; margin-bottom:1rem; }
+  .index { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); }
+}
 </style>
 </head>
 <body>
@@ -52,6 +66,29 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
   <h1>屈臣氏酒窖 分店地址 <span class="en-title">Watsons Wine Store Finder</span></h1>
   <div class="sub">資料來源：屈臣氏酒窖官方網站 store finder・資料更新：2026年10月29日・共 17 間分店</div>
 </header>
+<div class="layout">
+<aside class="sidebar">
+  <h3>店號索引 <span class="count">17</span></h3>
+  <ol class="index">
+<li><a href="#store-505"><span class="ix-no">505</span><span class="ix-name">Wanchai - Hopewell Centre</span><span class="ix-town">港島</span></a></li>
+<li><a href="#store-507"><span class="ix-no">507</span><span class="ix-name">Admiralty</span><span class="ix-town">港島</span></a></li>
+<li><a href="#store-510"><span class="ix-no">510</span><span class="ix-name">Causeway Bay</span><span class="ix-town">港島</span></a></li>
+<li><a href="#store-511"><span class="ix-no">511</span><span class="ix-name">Tung Chung</span><span class="ix-town">新界</span></a></li>
+<li><a href="#store-516"><span class="ix-no">516</span><span class="ix-name">Sheung Wan</span><span class="ix-town">港島</span></a></li>
+<li><a href="#store-519"><span class="ix-no">519</span><span class="ix-name">Wanchai</span><span class="ix-town">港島</span></a></li>
+<li><a href="#store-520"><span class="ix-no">520</span><span class="ix-name">PARK LANE</span><span class="ix-town">港島</span></a></li>
+<li><a href="#store-533"><span class="ix-no">533</span><span class="ix-name">APM</span><span class="ix-town">九龍</span></a></li>
+<li><a href="#store-536"><span class="ix-no">536</span><span class="ix-name">OCEAN CENTRE</span><span class="ix-town">九龍</span></a></li>
+<li><a href="#store-538"><span class="ix-no">538</span><span class="ix-name">IFC MALL</span><span class="ix-town">港島</span></a></li>
+<li><a href="#store-539"><span class="ix-no">539</span><span class="ix-name">CENTURY SQUARE</span><span class="ix-town">港島</span></a></li>
+<li><a href="#store-572"><span class="ix-no">572</span><span class="ix-name">澳門 – 氹仔</span><span class="ix-town">澳門</span></a></li>
+<li><a href="#store-576"><span class="ix-no">576</span><span class="ix-name">FESTIVAL WALK</span><span class="ix-town">九龍</span></a></li>
+<li><a href="#store-577"><span class="ix-no">577</span><span class="ix-name">CITYPLAZA</span><span class="ix-town">港島</span></a></li>
+<li><a href="#store-579"><span class="ix-no">579</span><span class="ix-name">K11</span><span class="ix-town">九龍</span></a></li>
+<li><a href="#store-584"><span class="ix-no">584</span><span class="ix-name">黃埔花園</span><span class="ix-town">九龍</span></a></li>
+<li><a href="#store-588"><span class="ix-no">588</span><span class="ix-name">長江中心</span><span class="ix-town">港島</span></a></li>
+  </ol>
+</aside>
 <main>
 <div class="filters">
   <label>地區
@@ -69,7 +106,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
   <button type="button" class="filter-reset" id="filter-reset">清除</button>
   <span class="filter-count" id="filter-count">顯示 17 間</span>
 </div>
-<section class="town"><h2>港島 <span class="en-title">Hong Kong Island</span> <span class="count">10</span></h2><div class="cards"><article class="store-card" data-town="港島" data-search="507 admiralty admiralty 香港金鐘太古廣場地庫great great food hall, level lg1, pacific place, 88 queensway, admiralty, hong kong admiralty admiralty">
+<section class="town"><h2>港島 <span class="en-title">Hong Kong Island</span> <span class="count">10</span></h2><div class="cards"><article id="store-507" class="store-card" data-town="港島" data-search="507 admiralty admiralty 香港金鐘太古廣場地庫great great food hall, level lg1, pacific place, 88 queensway, admiralty, hong kong admiralty admiralty">
   <div class="card-head">
     <span class="store-no">507</span>
     <div class="names">
@@ -94,7 +131,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <a href="https://www.watsonswine.com/zh/store/wwhk_507_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article class="store-card" data-town="港島" data-search="510 causeway bay causeway bay 香港銅鑼灣恩平道28號利園二期地下g03號舖 shop no.g03, g/f, lee garden two, 28 yun ping road, causeway bay, hong kong causeway bay causeway bay">
+<article id="store-510" class="store-card" data-town="港島" data-search="510 causeway bay causeway bay 香港銅鑼灣恩平道28號利園二期地下g03號舖 shop no.g03, g/f, lee garden two, 28 yun ping road, causeway bay, hong kong causeway bay causeway bay">
   <div class="card-head">
     <span class="store-no">510</span>
     <div class="names">
@@ -119,7 +156,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <a href="https://www.watsonswine.com/zh/store/wwhk_510_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article class="store-card" data-town="港島" data-search="520 park lane park lane 香港銅鑼灣告士打道310號柏寧酒店地下d3b號舖 shop no.d3b, g/f, style house, the park lane, 310 gloucester road, causeway bay, hong kong causeway bay causeway bay">
+<article id="store-520" class="store-card" data-town="港島" data-search="520 park lane park lane 香港銅鑼灣告士打道310號柏寧酒店地下d3b號舖 shop no.d3b, g/f, style house, the park lane, 310 gloucester road, causeway bay, hong kong causeway bay causeway bay">
   <div class="card-head">
     <span class="store-no">520</span>
     <div class="names">
@@ -144,7 +181,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <a href="https://www.watsonswine.com/zh/store/wwhk_520_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article class="store-card" data-town="港島" data-search="539 century square century square 香港中環德己立街1-13號世紀廣場地庫3號舖 shop 3, lg/f, century square, 1-13 d&#39;aguilar street, central, hong kong central central">
+<article id="store-539" class="store-card" data-town="港島" data-search="539 century square century square 香港中環德己立街1-13號世紀廣場地庫3號舖 shop 3, lg/f, century square, 1-13 d&#39;aguilar street, central, hong kong central central">
   <div class="card-head">
     <span class="store-no">539</span>
     <div class="names">
@@ -169,7 +206,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <a href="https://www.watsonswine.com/zh/store/wwhk_539_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article class="store-card" data-town="港島" data-search="588 長江中心 cheung kong centre 香港中環長江中心b2層 portion of b2/f, cheung kong centre central central">
+<article id="store-588" class="store-card" data-town="港島" data-search="588 長江中心 cheung kong centre 香港中環長江中心b2層 portion of b2/f, cheung kong centre central central">
   <div class="card-head">
     <span class="store-no">588</span>
     <div class="names">
@@ -194,7 +231,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <a href="https://www.watsonswine.com/zh/store/wwhk_588_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article class="store-card" data-town="港島" data-search="538 ifc mall ifc mall 香港中環國際金融中心商場3樓3019號舖 shop no.3019, podium level three, ifc mall, 8 finance street, central, hong kong central central">
+<article id="store-538" class="store-card" data-town="港島" data-search="538 ifc mall ifc mall 香港中環國際金融中心商場3樓3019號舖 shop no.3019, podium level three, ifc mall, 8 finance street, central, hong kong central central">
   <div class="card-head">
     <span class="store-no">538</span>
     <div class="names">
@@ -219,7 +256,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <a href="https://www.watsonswine.com/zh/store/wwhk_538_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article class="store-card" data-town="港島" data-search="516 sheung wan sheung wan 香港上環德輔道中199號無限極廣場地下g06號舖 shop g06, g/f, infinitus plaza, 199 des voeux road central, sheung wan, hong kong sheung wan sheung wan">
+<article id="store-516" class="store-card" data-town="港島" data-search="516 sheung wan sheung wan 香港上環德輔道中199號無限極廣場地下g06號舖 shop g06, g/f, infinitus plaza, 199 des voeux road central, sheung wan, hong kong sheung wan sheung wan">
   <div class="card-head">
     <span class="store-no">516</span>
     <div class="names">
@@ -244,7 +281,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <a href="https://www.watsonswine.com/zh/store/wwhk_516_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article class="store-card" data-town="港島" data-search="577 cityplaza cityplaza 香港太古太古城道18號太古城中心2樓223號舖 shop 223, 2/f, cityplaza, 18 taikoo shing road, taikoo shing, hong kong taikoo shing taikoo shing">
+<article id="store-577" class="store-card" data-town="港島" data-search="577 cityplaza cityplaza 香港太古太古城道18號太古城中心2樓223號舖 shop 223, 2/f, cityplaza, 18 taikoo shing road, taikoo shing, hong kong taikoo shing taikoo shing">
   <div class="card-head">
     <span class="store-no">577</span>
     <div class="names">
@@ -269,7 +306,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <a href="https://www.watsonswine.com/zh/store/wwhk_577_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article class="store-card" data-town="港島" data-search="519 wanchai wanchai 香港灣仔港灣道1號會議廣場1樓102c號舖 shop 102c, 1/f, shopping arcade, convention plaza, 1 harbour road, wan chai, hong kong wan chai wan chai">
+<article id="store-519" class="store-card" data-town="港島" data-search="519 wanchai wanchai 香港灣仔港灣道1號會議廣場1樓102c號舖 shop 102c, 1/f, shopping arcade, convention plaza, 1 harbour road, wan chai, hong kong wan chai wan chai">
   <div class="card-head">
     <span class="store-no">519</span>
     <div class="names">
@@ -294,7 +331,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <a href="https://www.watsonswine.com/zh/store/wwhk_519_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article class="store-card" data-town="港島" data-search="505 wanchai - hopewell centre wanchai - hopewell centre 香港灣仔皇后大道東183號合和中心3樓301-306號舖 shop 301-306, 3/f, hopewell centre, 183 queen&#39;s road east, wan chai, hong kong wan chai wan chai">
+<article id="store-505" class="store-card" data-town="港島" data-search="505 wanchai - hopewell centre wanchai - hopewell centre 香港灣仔皇后大道東183號合和中心3樓301-306號舖 shop 301-306, 3/f, hopewell centre, 183 queen&#39;s road east, wan chai, hong kong wan chai wan chai">
   <div class="card-head">
     <span class="store-no">505</span>
     <div class="names">
@@ -319,7 +356,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <a href="https://www.watsonswine.com/zh/store/wwhk_505_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article></div></section>
-<section class="town"><h2>九龍 <span class="en-title">Kowloon</span> <span class="count">5</span></h2><div class="cards"><article class="store-card" data-town="九龍" data-search="584 黃埔花園 whampoa garden 香港九龍紅磡黃埔花園第十二期家居庭第一層地庫taste taste, b1/f, homeworld, site 12, whampoa garden, kowloon, hong kong hung hom hung hom">
+<section class="town"><h2>九龍 <span class="en-title">Kowloon</span> <span class="count">5</span></h2><div class="cards"><article id="store-584" class="store-card" data-town="九龍" data-search="584 黃埔花園 whampoa garden 香港九龍紅磡黃埔花園第十二期家居庭第一層地庫taste taste, b1/f, homeworld, site 12, whampoa garden, kowloon, hong kong hung hom hung hom">
   <div class="card-head">
     <span class="store-no">584</span>
     <div class="names">
@@ -344,7 +381,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <a href="https://www.watsonswine.com/zh/store/wwhk_584_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article class="store-card" data-town="九龍" data-search="576 festival walk festival walk 香港九龍塘達之路80號又一城taste taste, festival walk, 80 tat chee avenue, kowloon tong, kowloon, hong kong kowloon tong kowloon tong">
+<article id="store-576" class="store-card" data-town="九龍" data-search="576 festival walk festival walk 香港九龍塘達之路80號又一城taste taste, festival walk, 80 tat chee avenue, kowloon tong, kowloon, hong kong kowloon tong kowloon tong">
   <div class="card-head">
     <span class="store-no">576</span>
     <div class="names">
@@ -369,7 +406,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <a href="https://www.watsonswine.com/zh/store/wwhk_576_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article class="store-card" data-town="九龍" data-search="533 apm apm 香港九龍觀塘觀塘道418號創紀之城5期apm低層地下5a號舖 shop 5a, lg/f, apm, millennium city 5, 418 kwun tong road, kwun tong, kowloon, hong kong kwun tong kwun tong">
+<article id="store-533" class="store-card" data-town="九龍" data-search="533 apm apm 香港九龍觀塘觀塘道418號創紀之城5期apm低層地下5a號舖 shop 5a, lg/f, apm, millennium city 5, 418 kwun tong road, kwun tong, kowloon, hong kong kwun tong kwun tong">
   <div class="card-head">
     <span class="store-no">533</span>
     <div class="names">
@@ -394,7 +431,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <a href="https://www.watsonswine.com/zh/store/wwhk_533_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article class="store-card" data-town="九龍" data-search="579 k11 k11 香港九龍尖沙咀k11地下g30號舖 shop g30, ground floor, k11, 18 hanoi road, tsim sha tsui, kowloon, hong kong tsim sha tsui tsim sha tsui">
+<article id="store-579" class="store-card" data-town="九龍" data-search="579 k11 k11 香港九龍尖沙咀k11地下g30號舖 shop g30, ground floor, k11, 18 hanoi road, tsim sha tsui, kowloon, hong kong tsim sha tsui tsim sha tsui">
   <div class="card-head">
     <span class="store-no">579</span>
     <div class="names">
@@ -419,7 +456,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <a href="https://www.watsonswine.com/zh/store/wwhk_579_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article class="store-card" data-town="九龍" data-search="536 ocean centre ocean centre 香港九龍尖沙咀海港城海洋中心3樓313a號舖 shop 313a, level 3, ocean centre, harbour city, 3-27 canton road, tsim sha tsui, kowloon, hong kong tsim sha tsui tsim sha tsui">
+<article id="store-536" class="store-card" data-town="九龍" data-search="536 ocean centre ocean centre 香港九龍尖沙咀海港城海洋中心3樓313a號舖 shop 313a, level 3, ocean centre, harbour city, 3-27 canton road, tsim sha tsui, kowloon, hong kong tsim sha tsui tsim sha tsui">
   <div class="card-head">
     <span class="store-no">536</span>
     <div class="names">
@@ -444,7 +481,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <a href="https://www.watsonswine.com/zh/store/wwhk_536_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article></div></section>
-<section class="town"><h2>新界 <span class="en-title">New Territories</span> <span class="count">1</span></h2><div class="cards"><article class="store-card" data-town="新界" data-search="511 tung chung tung chung 新界大嶼山東涌達東路20號東薈城b1-b10號舖 shops b01-b10, basement level 1, citygate, 20 tat tung road, tung chung, lantau, hong kong tung chung tung chung">
+<section class="town"><h2>新界 <span class="en-title">New Territories</span> <span class="count">1</span></h2><div class="cards"><article id="store-511" class="store-card" data-town="新界" data-search="511 tung chung tung chung 新界大嶼山東涌達東路20號東薈城b1-b10號舖 shops b01-b10, basement level 1, citygate, 20 tat tung road, tung chung, lantau, hong kong tung chung tung chung">
   <div class="card-head">
     <span class="store-no">511</span>
     <div class="names">
@@ -469,7 +506,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <a href="https://www.watsonswine.com/zh/store/wwhk_511_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article></div></section>
-<section class="town"><h2>澳門 <span class="en-title">Macau</span> <span class="count">1</span></h2><div class="cards"><article class="store-card" data-town="澳門" data-search="572 澳門 – 氹仔 macau – taipa 澳門南灣大馬路759號1樓1007b室 (只供自取。如需送貨，請聯繫客戶服務) avenida da praia grande, 759, 1 andar, suite 1007b, macau (for pick-up only. for home delivery, please contact our cs) taipa taipa">
+<section class="town"><h2>澳門 <span class="en-title">Macau</span> <span class="count">1</span></h2><div class="cards"><article id="store-572" class="store-card" data-town="澳門" data-search="572 澳門 – 氹仔 macau – taipa 澳門南灣大馬路759號1樓1007b室 (只供自取。如需送貨，請聯繫客戶服務) avenida da praia grande, 759, 1 andar, suite 1007b, macau (for pick-up only. for home delivery, please contact our cs) taipa taipa">
   <div class="card-head">
     <span class="store-no">572</span>
     <div class="names">
@@ -495,6 +532,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
   </div>
 </article></div></section>
 </main>
+</div>
 <footer>本頁資料自動抓取自屈臣氏酒窖官方網站，僅供參考；實際營業時間以官方為準。店名與地址為中英雙語，其餘欄位採用繁體中文頁資料。<span id="load-time"></span></footer>
 <script>
 (function () {
@@ -504,6 +542,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
   var countEl = document.getElementById('filter-count');
   var cards = Array.prototype.slice.call(document.querySelectorAll('.store-card'));
   var towns = Array.prototype.slice.call(document.querySelectorAll('.town'));
+  var indexItems = Array.prototype.slice.call(document.querySelectorAll('.index li'));
   var total = cards.length;
 
   // 本頁載入時間由前端動態產生，不寫入 HTML，避免污染變更偵測
@@ -522,6 +561,13 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     towns.forEach(function (t) {
       var any = Array.prototype.some.call(t.querySelectorAll('.store-card'), function (x) { return x.style.display !== 'none'; });
       t.style.display = any ? '' : 'none';
+    });
+    // 左側店號索引跟隨篩選同步顯示
+    indexItems.forEach(function (li) {
+      var a = li.querySelector('a');
+      if (!a) return;
+      var target = document.querySelector(a.getAttribute('href'));
+      li.style.display = (target && target.style.display !== 'none') ? '' : 'none';
     });
     countEl.textContent = '顯示 ' + shown + ' / ' + total + ' 間';
   }
