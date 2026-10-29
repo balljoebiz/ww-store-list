@@ -49,6 +49,60 @@ function townEn(town) {
   return map[town] || town || '';
 }
 
+/** 分區英文 → 繁體中文對照（API 的 district 欄位為英文） */
+const DISTRICT_ZH = {
+  // 香港島
+  'Central': '中環',
+  'Admiralty': '金鐘',
+  'Wan Chai': '灣仔',
+  'Causeway Bay': '銅鑼灣',
+  'Sheung Wan': '上環',
+  'Taikoo Shing': '太古城',
+  'Kennedy Town': '堅尼地城',
+  'North Point': '北角',
+  'Quarry Bay': '鰂魚涌',
+  'Chai Wan': '柴灣',
+  'Aberdeen': '香港仔',
+  'Happy Valley': '跑馬地',
+  'Repulse Bay': '淺水灣',
+  // 九龍
+  'Tsim Sha Tsui': '尖沙咀',
+  'Mong Kok': '旺角',
+  'Kowloon Tong': '九龍塘',
+  'Kowloon Bay': '九龍灣',
+  'Kwun Tong': '觀塘',
+  'Hung Hom': '紅磡',
+  'Sham Shui Po': '深水埗',
+  'Diamond Hill': '鑽石山',
+  'Wong Tai Sin': '黃大仙',
+  'Yau Tong': '油塘',
+  'Austin': '柯士甸',
+  'Mei Foo': '美孚',
+  // 新界
+  'Tsuen Wan': '荃灣',
+  'Tuen Mun': '屯門',
+  'Yuen Long': '元朗',
+  'Sha Tin': '沙田',
+  'Tai Po': '大埔',
+  'Fanling': '粉嶺',
+  'Sheung Shui': '上水',
+  'Ma On Shan': '馬鞍山',
+  'Tseung Kwan O': '將軍澳',
+  'Tsing Yi': '青衣',
+  'Tung Chung': '東涌',
+  'Tai Wai': '大圍',
+  'Tin Shui Wai': '天水圍',
+  'Kwai Fong': '葵芳',
+  // 澳門
+  'TAIPA': '氹仔',
+  'Macau': '澳門半島',
+  'Taipa': '氹仔',
+};
+function districtZh(en) {
+  const key = String(en || '').trim();
+  return DISTRICT_ZH[key] || DISTRICT_ZH[key.toLowerCase() === key ? key : key] || key;
+}
+
 async function fetchLang(lang) {
   const r = await fetch(`${BASE}&lang=${lang}`, { headers: HEADERS });
   if (!r.ok) throw new Error(`${lang} HTTP ${r.status}`);
@@ -75,6 +129,7 @@ async function main() {
       townEn: townEn(za.town),
       districtZh: (za.district || '').trim(),
       districtEn: (ea.district || za.district || '').trim(),
+      districtCn: districtZh(za.district),
       addressZh: (za.line1 || za.displayAddress1 || '').trim(),
       addressEn: (ea.line1 || ea.displayAddress1 || '').trim(),
       hoursZh: parseHours(z.openingHours && z.openingHours.name),
@@ -149,10 +204,10 @@ async function main() {
 
   const towns = [...new Set(records.map(r => r.townZh))].filter(Boolean);
 
-  // 左側店號索引：依店號升序，每行由左而右呈現「店號 / 店名 / 地區」
+  // 左側店號索引：依店號升序，每行由左而右呈現「店號 / 店名 / 地區（分區，如中環、上環、灣仔）」
   const indexRows = [...records]
     .sort((a, b) => Number(a.storeNo) - Number(b.storeNo))
-    .map(r => `<li><a href="#store-${esc(r.storeNo)}"><span class="ix-no">${esc(r.storeNo)}</span><span class="ix-name">${esc(r.nameZh)}</span><span class="ix-town">${esc(r.townZh)}</span></a></li>`)
+    .map(r => `<li><a href="#store-${esc(r.storeNo)}"><span class="ix-no">${esc(r.storeNo)}</span><span class="ix-name">${esc(r.nameZh)}</span><span class="ix-town">${esc(r.districtCn || r.townZh)}</span></a></li>`)
     .join('\n');
 
   const html = `<!DOCTYPE html>
@@ -166,6 +221,8 @@ async function main() {
 :root { --primary:#00a3a3; --accent:#0b7d7d; --bg:#fff; --fg:#1f2430; --muted:#6b7280; --card:#fff; --border:#e5e7eb; --tag:#e8f7f7; }
 @media (prefers-color-scheme: dark) { :root { --bg:#0f1418; --fg:#e5e7eb; --muted:#9ca3af; --card:#17202a; --border:#2a3540; --tag:#123b3b; } }
 * { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-padding-top: 96px; scroll-behavior: smooth; }
+.store-card { scroll-margin-top: 96px; }
 body { font-family:"Segoe UI","PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif; background:var(--bg); color:var(--fg); line-height:1.6; padding:1rem; }
 header { max-width:1100px; margin:0 auto 1.25rem; }
 h1 { font-size:1.5rem; color:var(--primary); }

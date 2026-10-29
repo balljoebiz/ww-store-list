@@ -9,6 +9,8 @@
 :root { --primary:#00a3a3; --accent:#0b7d7d; --bg:#fff; --fg:#1f2430; --muted:#6b7280; --card:#fff; --border:#e5e7eb; --tag:#e8f7f7; }
 @media (prefers-color-scheme: dark) { :root { --bg:#0f1418; --fg:#e5e7eb; --muted:#9ca3af; --card:#17202a; --border:#2a3540; --tag:#123b3b; } }
 * { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-padding-top: 96px; scroll-behavior: smooth; }
+.store-card { scroll-margin-top: 96px; }
 body { font-family:"Segoe UI","PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif; background:var(--bg); color:var(--fg); line-height:1.6; padding:1rem; }
 header { max-width:1100px; margin:0 auto 1.25rem; }
 h1 { font-size:1.5rem; color:var(--primary); }
@@ -70,23 +72,23 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
 <aside class="sidebar">
   <h3>店號索引 <span class="count">17</span></h3>
   <ol class="index">
-<li><a href="#store-505"><span class="ix-no">505</span><span class="ix-name">Wanchai - Hopewell Centre</span><span class="ix-town">港島</span></a></li>
-<li><a href="#store-507"><span class="ix-no">507</span><span class="ix-name">Admiralty</span><span class="ix-town">港島</span></a></li>
-<li><a href="#store-510"><span class="ix-no">510</span><span class="ix-name">Causeway Bay</span><span class="ix-town">港島</span></a></li>
-<li><a href="#store-511"><span class="ix-no">511</span><span class="ix-name">Tung Chung</span><span class="ix-town">新界</span></a></li>
-<li><a href="#store-516"><span class="ix-no">516</span><span class="ix-name">Sheung Wan</span><span class="ix-town">港島</span></a></li>
-<li><a href="#store-519"><span class="ix-no">519</span><span class="ix-name">Wanchai</span><span class="ix-town">港島</span></a></li>
-<li><a href="#store-520"><span class="ix-no">520</span><span class="ix-name">PARK LANE</span><span class="ix-town">港島</span></a></li>
-<li><a href="#store-533"><span class="ix-no">533</span><span class="ix-name">APM</span><span class="ix-town">九龍</span></a></li>
-<li><a href="#store-536"><span class="ix-no">536</span><span class="ix-name">OCEAN CENTRE</span><span class="ix-town">九龍</span></a></li>
-<li><a href="#store-538"><span class="ix-no">538</span><span class="ix-name">IFC MALL</span><span class="ix-town">港島</span></a></li>
-<li><a href="#store-539"><span class="ix-no">539</span><span class="ix-name">CENTURY SQUARE</span><span class="ix-town">港島</span></a></li>
-<li><a href="#store-572"><span class="ix-no">572</span><span class="ix-name">澳門 – 氹仔</span><span class="ix-town">澳門</span></a></li>
-<li><a href="#store-576"><span class="ix-no">576</span><span class="ix-name">FESTIVAL WALK</span><span class="ix-town">九龍</span></a></li>
-<li><a href="#store-577"><span class="ix-no">577</span><span class="ix-name">CITYPLAZA</span><span class="ix-town">港島</span></a></li>
-<li><a href="#store-579"><span class="ix-no">579</span><span class="ix-name">K11</span><span class="ix-town">九龍</span></a></li>
-<li><a href="#store-584"><span class="ix-no">584</span><span class="ix-name">黃埔花園</span><span class="ix-town">九龍</span></a></li>
-<li><a href="#store-588"><span class="ix-no">588</span><span class="ix-name">長江中心</span><span class="ix-town">港島</span></a></li>
+<li><a href="#store-505"><span class="ix-no">505</span><span class="ix-name">Wanchai - Hopewell Centre</span><span class="ix-town">灣仔</span></a></li>
+<li><a href="#store-507"><span class="ix-no">507</span><span class="ix-name">Admiralty</span><span class="ix-town">金鐘</span></a></li>
+<li><a href="#store-510"><span class="ix-no">510</span><span class="ix-name">Causeway Bay</span><span class="ix-town">銅鑼灣</span></a></li>
+<li><a href="#store-511"><span class="ix-no">511</span><span class="ix-name">Tung Chung</span><span class="ix-town">東涌</span></a></li>
+<li><a href="#store-516"><span class="ix-no">516</span><span class="ix-name">Sheung Wan</span><span class="ix-town">上環</span></a></li>
+<li><a href="#store-519"><span class="ix-no">519</span><span class="ix-name">Wanchai</span><span class="ix-town">灣仔</span></a></li>
+<li><a href="#store-520"><span class="ix-no">520</span><span class="ix-name">PARK LANE</span><span class="ix-town">銅鑼灣</span></a></li>
+<li><a href="#store-533"><span class="ix-no">533</span><span class="ix-name">APM</span><span class="ix-town">觀塘</span></a></li>
+<li><a href="#store-536"><span class="ix-no">536</span><span class="ix-name">OCEAN CENTRE</span><span class="ix-town">尖沙咀</span></a></li>
+<li><a href="#store-538"><span class="ix-no">538</span><span class="ix-name">IFC MALL</span><span class="ix-town">中環</span></a></li>
+<li><a href="#store-539"><span class="ix-no">539</span><span class="ix-name">CENTURY SQUARE</span><span class="ix-town">中環</span></a></li>
+<li><a href="#store-572"><span class="ix-no">572</span><span class="ix-name">澳門 – 氹仔</span><span class="ix-town">氹仔</span></a></li>
+<li><a href="#store-576"><span class="ix-no">576</span><span class="ix-name">FESTIVAL WALK</span><span class="ix-town">九龍塘</span></a></li>
+<li><a href="#store-577"><span class="ix-no">577</span><span class="ix-name">CITYPLAZA</span><span class="ix-town">太古城</span></a></li>
+<li><a href="#store-579"><span class="ix-no">579</span><span class="ix-name">K11</span><span class="ix-town">尖沙咀</span></a></li>
+<li><a href="#store-584"><span class="ix-no">584</span><span class="ix-name">黃埔花園</span><span class="ix-town">紅磡</span></a></li>
+<li><a href="#store-588"><span class="ix-no">588</span><span class="ix-name">長江中心</span><span class="ix-town">中環</span></a></li>
   </ol>
 </aside>
 <main>
