@@ -1,5 +1,5 @@
 {
-  "dataUpdated": "2026年10月29日",
+  "dataUpdated": "2026年10月30日",
   "count": 17,
   "stores": [
     {
@@ -33,7 +33,12 @@
         "lat": 22.277922,
         "lng": 114.164843
       },
-      "url": "/zh/store/wwhk_507_ZT?lat=22.277922&long=114.164843"
+      "url": "/zh/store/wwhk_507_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null,
+      "removedDays": 0,
+      "state": "active"
     },
     {
       "storeNo": "510",
@@ -58,7 +63,12 @@
         "lat": 22.278481,
         "lng": 114.185829
       },
-      "url": "/zh/store/wwhk_510_ZT?lat=22.277922&long=114.164843"
+      "url": "/zh/store/wwhk_510_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null,
+      "removedDays": 0,
+      "state": "active"
     },
     {
       "storeNo": "520",
@@ -83,7 +93,12 @@
         "lat": 22.281058,
         "lng": 114.186537
       },
-      "url": "/zh/store/wwhk_520_ZT?lat=22.277922&long=114.164843"
+      "url": "/zh/store/wwhk_520_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null,
+      "removedDays": 0,
+      "state": "active"
     },
     {
       "storeNo": "539",
@@ -108,7 +123,12 @@
         "lat": 22.281529,
         "lng": 114.15591
       },
-      "url": "/zh/store/wwhk_539_ZT?lat=22.277922&long=114.164843"
+      "url": "/zh/store/wwhk_539_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null,
+      "removedDays": 0,
+      "state": "active"
     },
     {
       "storeNo": "588",
@@ -137,7 +157,12 @@
         "lat": 22.279753,
         "lng": 114.160234
       },
-      "url": "/zh/store/wwhk_588_ZT?lat=22.277922&long=114.164843"
+      "url": "/zh/store/wwhk_588_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null,
+      "removedDays": 0,
+      "state": "active"
     },
     {
       "storeNo": "538",
@@ -162,7 +187,12 @@
         "lat": 22.285189,
         "lng": 114.158432
       },
-      "url": "/zh/store/wwhk_538_ZT?lat=22.277922&long=114.164843"
+      "url": "/zh/store/wwhk_538_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null,
+      "removedDays": 0,
+      "state": "active"
     },
     {
       "storeNo": "516",
@@ -187,7 +217,12 @@
         "lat": 22.286463,
         "lng": 114.153689
       },
-      "url": "/zh/store/wwhk_516_ZT?lat=22.277922&long=114.164843"
+      "url": "/zh/store/wwhk_516_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null,
+      "removedDays": 0,
+      "state": "active"
     },
     {
       "storeNo": "577",
@@ -216,7 +251,12 @@
         "lat": 22.286268,
         "lng": 114.217121
       },
-      "url": "/zh/store/wwhk_577_ZT?lat=22.277922&long=114.164843"
+      "url": "/zh/store/wwhk_577_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null,
+      "removedDays": 0,
+      "state": "active"
     },
     {
       "storeNo": "519",
@@ -241,7 +281,12 @@
         "lat": 22.28114,
         "lng": 114.173414
       },
-      "url": "/zh/store/wwhk_519_ZT?lat=22.277922&long=114.164843"
+      "url": "/zh/store/wwhk_519_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null,
+      "removedDays": 0,
+      "state": "active"
     },
     {
       "storeNo": "505",
@@ -266,7 +311,12 @@
         "lat": 22.27471,
         "lng": 114.171571
       },
-      "url": "/zh/store/wwhk_505_ZT?lat=22.277922&long=114.164843"
+      "url": "/zh/store/wwhk_505_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null,
+      "removedDays": 0,
+      "state": "active"
     },
     {
       "storeNo": "584",
@@ -291,7 +341,12 @@
         "lat": 22.305995,
         "lng": 114.190725
       },
-      "url": "/zh/store/wwhk_584_ZT?lat=22.277922&long=114.164843"
+      "url": "/zh/store/wwhk_584_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null,
+      "removedDays": 0,
+      "state": "active"
     },
     {
       "storeNo": "576",
@@ -316,7 +371,12 @@
         "lat": 22.337615,
         "lng": 114.174284
       },
-      "url": "/zh/store/wwhk_576_ZT?lat=22.277922&long=114.164843"
+      "url": "/zh/store/wwhk_576_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null,
+      "removedDays": 0,
+      "state": "active"
     },
     {
       "storeNo": "533",
@@ -341,7 +401,12 @@
         "lat": 22.312609,
         "lng": 114.225324
       },
-      "url": "/zh/store/wwhk_533_ZT?lat=22.277922&long=114.164843"
+      "url": "/zh/store/wwhk_533_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null,
+      "removedDays": 0,
+      "state": "active"
     },
     {
       "storeNo": "579",
@@ -366,7 +431,12 @@
         "lat": 22.297421,
         "lng": 114.173102
       },
-      "url": "/zh/store/wwhk_579_ZT?lat=22.277922&long=114.164843"
+      "url": "/zh/store/wwhk_579_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null,
+      "removedDays": 0,
+      "state": "active"
     },
     {
       "storeNo": "536",
@@ -391,7 +461,12 @@
         "lat": 22.296341,
         "lng": 114.168511
       },
-      "url": "/zh/store/wwhk_536_ZT?lat=22.277922&long=114.164843"
+      "url": "/zh/store/wwhk_536_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null,
+      "removedDays": 0,
+      "state": "active"
     },
     {
       "storeNo": "511",
@@ -416,7 +491,12 @@
         "lat": 22.289845,
         "lng": 113.94083
       },
-      "url": "/zh/store/wwhk_511_ZT?lat=22.277922&long=114.164843"
+      "url": "/zh/store/wwhk_511_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null,
+      "removedDays": 0,
+      "state": "active"
     },
     {
       "storeNo": "572",
@@ -441,7 +521,12 @@
         "lat": 22.156834,
         "lng": 113.556468
       },
-      "url": "/zh/store/wwhk_572_ZT?lat=22.277922&long=114.164843"
+      "url": "/zh/store/wwhk_572_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null,
+      "removedDays": 0,
+      "state": "active"
     }
   ]
 }

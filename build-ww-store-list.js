@@ -149,33 +149,126 @@ async function main() {
     return a.nameEn.localeCompare(b.nameEn, 'en');
   });
 
-  // 資料更新日：只在資料本體真的改變時更新
+  // ── 店鋪生命週期（active / removed / closed）────────────────────────────
+  const HIST_PATH = path.join(OUT_DIR, 'store-history.json');
+  let history = { updatedAt: '', stores: {} };
+  try {
+    history = JSON.parse(fs.readFileSync(HIST_PATH, 'utf8'));
+  } catch {
+    history = { updatedAt: '', stores: {} };
+  }
+  const now = new Date();
+  const nowIso = now.toISOString();
+  const DAY_MS = 86400000;
+  const REMOVED_KEEP_DAYS = 30;
+
+  const merged = new Map();
+  // 官方現有 → active（firstSeen 沿用歷史，沒有則記為現在）
+  for (const r of records) {
+    const h = history.stores[r.storeNo] || {};
+    merged.set(r.storeNo, {
+      ...r,
+      firstSeen: h.firstSeen || nowIso,
+      lastSeen: nowIso,
+      removedAt: null,
+      removedDays: 0,
+      state: 'active',
+    });
+  }
+  // 官方已無但歷史有 → removed / closed（removedAt 只設定一次）
+  for (const [no, h] of Object.entries(history.stores)) {
+    if (merged.has(no)) continue;
+    const removedAt = h.removedAt || nowIso;
+    const removedDays = Math.max(0, Math.floor((now.getTime() - new Date(removedAt).getTime()) / DAY_MS));
+    merged.set(no, {
+      storeNo: no,
+      nameZh: h.name || '',
+      nameEn: h.nameEn || '',
+      townZh: h.region || h.town || '',
+      districtCn: h.district || '',
+      districtEn: h.district || '',
+      addressZh: h.address || '',
+      addressEn: '',
+      hoursZh: h.hours || '',
+      phone: '',
+      features: [],
+      geo: h.geo || null,
+      url: h.url || '',
+      firstSeen: h.firstSeen || nowIso,
+      lastSeen: h.lastSeen || nowIso,
+      removedAt,
+      removedDays,
+      state: removedDays > REMOVED_KEEP_DAYS ? 'closed' : 'removed',
+    });
+  }
+
+  const allRecords = [...merged.values()];
+  const activeRecords = allRecords.filter((r) => r.state !== 'closed');
+
+  // 資料更新日：只在「資料本體 + 狀態」真的改變時更新
   const prev = fs.existsSync(OUT_JSON) ? JSON.parse(fs.readFileSync(OUT_JSON, 'utf8')) : null;
-  const body = JSON.stringify(records);
-  const sameAsPrev = prev && prev.stores && JSON.stringify(prev.stores) === body;
+  const fingerprint = JSON.stringify(allRecords.map(({ storeNo, nameZh, townZh, districtCn, addressZh, hoursZh, phone, removedAt, state }) => ({ storeNo, nameZh, townZh, districtCn, addressZh, hoursZh, phone, removedAt, state })));
+  const prevFingerprint = prev && prev.stores ? JSON.stringify(prev.stores.map(({ storeNo, nameZh, townZh, districtCn, addressZh, hoursZh, phone, removedAt, state }) => ({ storeNo, nameZh, townZh, districtCn, addressZh, hoursZh, phone, removedAt, state }))) : null;
+  const sameAsPrev = prevFingerprint !== null && prevFingerprint === fingerprint;
   const dataUpdated = (sameAsPrev && prev.dataUpdated)
     ? prev.dataUpdated
     : new Date().toLocaleDateString('zh-HK', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Asia/Hong_Kong' });
 
-  fs.writeFileSync(OUT_JSON, JSON.stringify({ dataUpdated, count: records.length, stores: records }, null, 2), 'utf8');
+  fs.writeFileSync(OUT_JSON, JSON.stringify({ dataUpdated, count: allRecords.length, stores: allRecords }, null, 2), 'utf8');
+
+  // 寫回歷史（closed 永久保留，不刪）
+  const newHistory = { updatedAt: nowIso, stores: {} };
+  for (const r of allRecords) {
+    newHistory.stores[r.storeNo] = {
+      storeNo: r.storeNo,
+      name: r.nameZh,
+      nameEn: r.nameEn,
+      region: r.townZh,
+      district: r.districtCn,
+      town: r.townZh,
+      address: r.addressZh,
+      hours: r.hoursZh,
+      geo: r.geo,
+      url: r.url,
+      firstSeen: r.firstSeen,
+      lastSeen: r.lastSeen,
+      removedAt: r.removedAt,
+    };
+  }
+  fs.writeFileSync(HIST_PATH, JSON.stringify(newHistory, null, 2), 'utf8');
+
+  const fmtDate = (iso) => {
+    if (!iso) return '';
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return '';
+    return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
+  };
 
   const card = (r) => {
     const mapLink = r.geo ? `https://www.google.com/maps?q=${r.geo.lat},${r.geo.lng}` : '#';
     const feats = r.features.length
       ? `<div class="tags">${r.features.map(f => `<span class="tag" title="${esc(f.code)}">${esc(f.zh || f.code)}</span>`).join('')}</div>`
       : '';
-    return `<article id="store-${esc(r.storeNo)}" class="store-card" data-town="${esc(r.townZh)}" data-search="${esc([r.storeNo, r.nameZh, r.nameEn, r.addressZh, r.addressEn, r.districtZh, r.districtEn].join(' ').toLowerCase())}">
+    const stateCls = r.state === 'removed' ? ' is-removed' : r.state === 'closed' ? ' is-closed' : '';
+    const badge = r.state === 'removed'
+      ? '<span class="badge-removed">原網頁已移除</span>'
+      : r.state === 'closed' ? '<span class="badge-closed">已閉店</span>' : '';
+    const note = (r.state === 'removed' || r.state === 'closed')
+      ? `<div class="removed-note">最後於官方出現：${fmtDate(r.lastSeen)}・${fmtDate(r.removedAt)} 起已移除</div>`
+      : '';
+    return `<article id="store-${esc(r.storeNo)}" class="store-card${stateCls}" data-town="${esc(r.townZh)}" data-state="${r.state}" data-search="${esc([r.storeNo, r.nameZh, r.nameEn, r.addressZh, r.addressEn, r.districtCn, r.districtEn].join(' ').toLowerCase())}">
   <div class="card-head">
     <span class="store-no">${esc(r.storeNo)}</span>
     <div class="names">
       <div class="name-zh">${esc(r.nameZh)}</div>
       <div class="name-en">${esc(r.nameEn)}</div>
     </div>
+    ${badge}
   </div>
   <dl class="fields">
     <div class="field">
       <dt>地址</dt>
-      <dd><span class="zh">${esc(r.addressZh)}</span><span class="en">${esc(r.addressEn)}</span></dd>
+      <dd><span class="zh">${esc(r.addressZh)}</span>${r.addressEn ? `<span class="en">${esc(r.addressEn)}</span>` : ''}</dd>
     </div>
     <div class="field">
       <dt>營業時間</dt>
@@ -184,6 +277,7 @@ async function main() {
     ${r.phone ? `<div class="field"><dt>電話</dt><dd><span class="zh">${esc(r.phone)}</span></dd></div>` : ''}
   </dl>
   ${feats}
+  ${note}
   <div class="links">
     <a href="${mapLink}" target="_blank" rel="noopener">查看地圖</a>
     ${r.url ? `<a href="https://www.watsonswine.com${esc(r.url)}" target="_blank" rel="noopener">官方頁面</a>` : ''}
@@ -193,21 +287,34 @@ async function main() {
 
   // 只按地區分組（不設分區層級）
   const grouped = new Map();
-  for (const r of records) {
+  for (const r of activeRecords) {
     if (!grouped.has(r.townZh)) grouped.set(r.townZh, []);
     grouped.get(r.townZh).push(r);
   }
   const sections = [...grouped.entries()].map(([town, list]) => {
     const en = list[0].townEn || '';
-    return `<section class="town"><h2>${esc(town)} <span class="en-title">${esc(en)}</span> <span class="count">${list.length}</span></h2><div class="cards">${list.map(card).join('\n')}</div></section>`;
+    const removedCount = list.filter((r) => r.state === 'removed').length;
+    const countLabel = removedCount
+      ? `${list.length}（含 ${removedCount} 已移除）`
+      : `${list.length}`;
+    return `<section class="town"><h2>${esc(town)} <span class="en-title">${esc(en)}</span> <span class="count">${countLabel}</span></h2><div class="cards">${list.map(card).join('\n')}</div></section>`;
   });
 
-  const towns = [...new Set(records.map(r => r.townZh))].filter(Boolean);
+  // 頁底「已閉店」區塊（超過 30 天，不列入左側索引）
+  const closedRecords = allRecords.filter((r) => r.state === 'closed');
+  const closedSection = closedRecords.length
+    ? `<section class="closed-section"><h2>已閉店 <span class="en-title">Closed</span> <span class="count">${closedRecords.length}</span></h2><p class="closed-hint">以下分店已從官方網站移除超過 30 天，僅保留記錄供查閱。</p><div class="cards">${closedRecords.map(card).join('\n')}</div></section>`
+    : '';
 
-  // 左側店號索引：依店號升序，每行由左而右呈現「店號 / 店名 / 地區（分區，如中環、上環、灣仔）」
-  const indexRows = [...records]
+  const towns = [...new Set(activeRecords.map(r => r.townZh))].filter(Boolean);
+
+  // 左側店號索引：依店號升序；含 removed（灰階）、排除 closed
+  const indexRows = [...activeRecords]
     .sort((a, b) => Number(a.storeNo) - Number(b.storeNo))
-    .map(r => `<li><a href="#store-${esc(r.storeNo)}"><span class="ix-no">${esc(r.storeNo)}</span><span class="ix-name">${esc(r.nameZh)}</span><span class="ix-town">${esc(r.districtCn || r.townZh)}</span></a></li>`)
+    .map(r => {
+      const cls = r.state === 'removed' ? ' class="is-removed"' : '';
+      return `<li${cls}><a href="#store-${esc(r.storeNo)}"><span class="ix-no">${esc(r.storeNo)}</span><span class="ix-name">${esc(r.nameZh)}</span><span class="ix-town">${esc(r.districtCn || r.townZh)}</span></a></li>`;
+    })
     .join('\n');
 
   const html = `<!DOCTYPE html>
@@ -266,7 +373,17 @@ main { flex:1; min-width:0; }
 .links { display:flex; gap:.9rem; }
 .links a { color:var(--primary); font-size:.82rem; text-decoration:none; }
 .links a:hover { text-decoration:underline; }
-footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78rem; border-top:1px solid var(--border); padding-top:.7rem; }
+/* ── 店鋪生命週期狀態 ── */
+.store-card.is-removed { border:1px dashed #d9463f; background:repeating-linear-gradient(135deg,transparent,transparent 10px,rgba(217,70,63,.035) 10px,rgba(217,70,63,.035) 20px); }
+.badge-removed { background:#d9463f; color:#fff; font-size:.66rem; font-weight:700; padding:.1rem .4rem; border-radius:.25rem; white-space:nowrap; }
+.removed-note { font-size:.72rem; color:#d9463f; }
+.store-card.is-closed { opacity:.62; filter:grayscale(1); }
+.badge-closed { background:var(--muted); color:#fff; font-size:.66rem; font-weight:700; padding:.1rem .4rem; border-radius:.25rem; white-space:nowrap; }
+.index li.is-removed { opacity:.55; }
+.closed-section { margin-top:2.5rem; padding-top:1.25rem; border-top:2px dashed var(--border); }
+.closed-section h2 { font-size:1.1rem; color:var(--muted); margin-bottom:.35rem; }
+.closed-section .closed-hint { font-size:.78rem; color:var(--muted); margin-bottom:.75rem; }
+footer { max-width:1280px; margin:2rem auto 0; color:var(--muted); font-size:.78rem; border-top:1px solid var(--border); padding-top:.7rem; }
 @media (max-width:680px) { .cards { grid-template-columns:1fr; } }
 @media (max-width:900px) {
   .layout { display:block; }
@@ -278,11 +395,21 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
 <body>
 <header>
   <h1>屈臣氏酒窖 分店地址 <span class="en-title">Watsons Wine Store Finder</span></h1>
-  <div class="sub">資料來源：屈臣氏酒窖官方網站 store finder・資料更新：${dataUpdated}・共 ${records.length} 間分店</div>
+  <div class="sub">資料來源：屈臣氏酒窖官方網站 store finder・資料更新：${dataUpdated}・現有 ${records.length} 間${(() => {
+    const removed = allRecords.filter((r) => r.state === 'removed').length;
+    const closed = closedRecords.length;
+    const parts = [];
+    if (removed) parts.push(`${removed} 間已移除（30 天內保留）`);
+    if (closed) parts.push(`${closed} 間已閉店`);
+    return parts.length ? `・${parts.join('・')}` : '';
+  })()}${(() => {
+    const newCount = allRecords.filter((r) => r.state === 'active' && new Date(r.firstSeen).getTime() > Date.now() - 86400000).length;
+    return newCount ? `・新增 ${newCount} 間` : '';
+  })()}</div>
 </header>
 <div class="layout">
 <aside class="sidebar">
-  <h3>店號索引 <span class="count">${records.length}</span></h3>
+  <h3>店號索引 <span class="count">${activeRecords.length}</span></h3>
   <ol class="index">
 ${indexRows}
   </ol>
@@ -293,7 +420,7 @@ ${indexRows}
     <select id="filter-town">
       <option value="">全部</option>
 ${towns.map(t => {
-  const en = (records.find(r => r.townZh === t) || {}).townEn || '';
+  const en = (activeRecords.find(r => r.townZh === t) || {}).townEn || '';
   return `      <option value="${esc(t)}">${esc(t)}${en ? ' ' + esc(en) : ''}</option>`;
 }).join('\n')}
     </select>
@@ -302,9 +429,10 @@ ${towns.map(t => {
     <input id="filter-search" type="search" placeholder="店名 / 地址（中英文皆可）">
   </label>
   <button type="button" class="filter-reset" id="filter-reset">清除</button>
-  <span class="filter-count" id="filter-count">顯示 ${records.length} 間</span>
+  <span class="filter-count" id="filter-count">顯示 ${activeRecords.length} 間</span>
 </div>
 ${sections.join('\n')}
+${closedSection}
 </main>
 </div>
 <footer>本頁資料自動抓取自屈臣氏酒窖官方網站，僅供參考；實際營業時間以官方為準。店名與地址為中英雙語，其餘欄位採用繁體中文頁資料。<span id="load-time"></span></footer>
@@ -314,7 +442,9 @@ ${sections.join('\n')}
   var searchIn = document.getElementById('filter-search');
   var resetBtn = document.getElementById('filter-reset');
   var countEl = document.getElementById('filter-count');
-  var cards = Array.prototype.slice.call(document.querySelectorAll('.store-card'));
+  // 已閉店卡片位於頁底獨立區塊，不參與篩選
+  var allCards = Array.prototype.slice.call(document.querySelectorAll('.store-card'));
+  var cards = allCards.filter(function (c) { return c.getAttribute('data-state') !== 'closed'; });
   var towns = Array.prototype.slice.call(document.querySelectorAll('.town'));
   var indexItems = Array.prototype.slice.call(document.querySelectorAll('.index li'));
   var total = cards.length;

@@ -1,0 +1,311 @@
+{
+  "updatedAt": "2026-10-30T04:12:57.469Z",
+  "stores": {
+    "505": {
+      "storeNo": "505",
+      "name": "Wanchai - Hopewell Centre",
+      "nameEn": "Wanchai - Hopewell Centre",
+      "region": "港島",
+      "district": "灣仔",
+      "town": "港島",
+      "address": "香港灣仔皇后大道東183號合和中心3樓301-306號舖",
+      "hours": "星期一至日 11am - 7:30pm",
+      "geo": {
+        "lat": 22.27471,
+        "lng": 114.171571
+      },
+      "url": "/zh/store/wwhk_505_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null
+    },
+    "507": {
+      "storeNo": "507",
+      "name": "Admiralty",
+      "nameEn": "Admiralty",
+      "region": "港島",
+      "district": "金鐘",
+      "town": "港島",
+      "address": "香港金鐘太古廣場地庫Great",
+      "hours": "星期一至日 10am - 8pm",
+      "geo": {
+        "lat": 22.277922,
+        "lng": 114.164843
+      },
+      "url": "/zh/store/wwhk_507_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null
+    },
+    "510": {
+      "storeNo": "510",
+      "name": "Causeway Bay",
+      "nameEn": "Causeway Bay",
+      "region": "港島",
+      "district": "銅鑼灣",
+      "town": "港島",
+      "address": "香港銅鑼灣恩平道28號利園二期地下G03號舖",
+      "hours": "星期一至日 11am - 8pm",
+      "geo": {
+        "lat": 22.278481,
+        "lng": 114.185829
+      },
+      "url": "/zh/store/wwhk_510_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null
+    },
+    "511": {
+      "storeNo": "511",
+      "name": "Tung Chung",
+      "nameEn": "Tung Chung",
+      "region": "新界",
+      "district": "東涌",
+      "town": "新界",
+      "address": "新界大嶼山東涌達東路20號東薈城B1-B10號舖",
+      "hours": "星期日至四 11:30am - 8pm；星期五至六及公眾假期 11:30am - 8pm",
+      "geo": {
+        "lat": 22.289845,
+        "lng": 113.94083
+      },
+      "url": "/zh/store/wwhk_511_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null
+    },
+    "516": {
+      "storeNo": "516",
+      "name": "Sheung Wan",
+      "nameEn": "Sheung Wan",
+      "region": "港島",
+      "district": "上環",
+      "town": "港島",
+      "address": "香港上環德輔道中199號無限極廣場地下G06號舖",
+      "hours": "星期一至五 11am - 8pm；星期六及星期日及公眾假期 11am - 8:00pm",
+      "geo": {
+        "lat": 22.286463,
+        "lng": 114.153689
+      },
+      "url": "/zh/store/wwhk_516_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null
+    },
+    "519": {
+      "storeNo": "519",
+      "name": "Wanchai",
+      "nameEn": "Wanchai",
+      "region": "港島",
+      "district": "灣仔",
+      "town": "港島",
+      "address": "香港灣仔港灣道1號會議廣場1樓102C號舖",
+      "hours": "星期一至五 11am - 8pm；星期六及星期日及公眾假期 11am - 8:00pm",
+      "geo": {
+        "lat": 22.28114,
+        "lng": 114.173414
+      },
+      "url": "/zh/store/wwhk_519_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null
+    },
+    "520": {
+      "storeNo": "520",
+      "name": "PARK LANE",
+      "nameEn": "PARK LANE",
+      "region": "港島",
+      "district": "銅鑼灣",
+      "town": "港島",
+      "address": "香港銅鑼灣告士打道310號柏寧酒店地下D3b號舖",
+      "hours": "星期一至日 11:30am - 8pm",
+      "geo": {
+        "lat": 22.281058,
+        "lng": 114.186537
+      },
+      "url": "/zh/store/wwhk_520_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null
+    },
+    "533": {
+      "storeNo": "533",
+      "name": "APM",
+      "nameEn": "APM",
+      "region": "九龍",
+      "district": "觀塘",
+      "town": "九龍",
+      "address": "香港九龍觀塘觀塘道418號創紀之城5期apm低層地下5A號舖",
+      "hours": "星期一至日 11am - 7:30pm",
+      "geo": {
+        "lat": 22.312609,
+        "lng": 114.225324
+      },
+      "url": "/zh/store/wwhk_533_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null
+    },
+    "536": {
+      "storeNo": "536",
+      "name": "OCEAN CENTRE",
+      "nameEn": "OCEAN CENTRE",
+      "region": "九龍",
+      "district": "尖沙咀",
+      "town": "九龍",
+      "address": "香港九龍尖沙咀海港城海洋中心3樓313A號舖",
+      "hours": "星期一至日 11:30am - 8pm",
+      "geo": {
+        "lat": 22.296341,
+        "lng": 114.168511
+      },
+      "url": "/zh/store/wwhk_536_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null
+    },
+    "538": {
+      "storeNo": "538",
+      "name": "IFC MALL",
+      "nameEn": "IFC MALL",
+      "region": "港島",
+      "district": "中環",
+      "town": "港島",
+      "address": "香港中環國際金融中心商場3樓3019號舖",
+      "hours": "星期一至日 11am - 8pm",
+      "geo": {
+        "lat": 22.285189,
+        "lng": 114.158432
+      },
+      "url": "/zh/store/wwhk_538_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null
+    },
+    "539": {
+      "storeNo": "539",
+      "name": "CENTURY SQUARE",
+      "nameEn": "CENTURY SQUARE",
+      "region": "港島",
+      "district": "中環",
+      "town": "港島",
+      "address": "香港中環德己立街1-13號世紀廣場地庫3號舖",
+      "hours": "星期一至日 11am - 8pm",
+      "geo": {
+        "lat": 22.281529,
+        "lng": 114.15591
+      },
+      "url": "/zh/store/wwhk_539_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null
+    },
+    "572": {
+      "storeNo": "572",
+      "name": "澳門 – 氹仔",
+      "nameEn": "MACAU – TAIPA",
+      "region": "澳門",
+      "district": "氹仔",
+      "town": "澳門",
+      "address": "澳門南灣大馬路759號1樓1007B室 (只供自取。如需送貨，請聯繫客戶服務)",
+      "hours": "星期一至星期五 10am - 1pm",
+      "geo": {
+        "lat": 22.156834,
+        "lng": 113.556468
+      },
+      "url": "/zh/store/wwhk_572_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null
+    },
+    "576": {
+      "storeNo": "576",
+      "name": "FESTIVAL WALK",
+      "nameEn": "FESTIVAL WALK",
+      "region": "九龍",
+      "district": "九龍塘",
+      "town": "九龍",
+      "address": "香港九龍塘達之路80號又一城TASTE",
+      "hours": "星期一至日 11am - 8pm",
+      "geo": {
+        "lat": 22.337615,
+        "lng": 114.174284
+      },
+      "url": "/zh/store/wwhk_576_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null
+    },
+    "577": {
+      "storeNo": "577",
+      "name": "CITYPLAZA",
+      "nameEn": "CITYPLAZA",
+      "region": "港島",
+      "district": "太古城",
+      "town": "港島",
+      "address": "香港太古太古城道18號太古城中心2樓223號舖",
+      "hours": "星期一至日 11am - 8pm",
+      "geo": {
+        "lat": 22.286268,
+        "lng": 114.217121
+      },
+      "url": "/zh/store/wwhk_577_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null
+    },
+    "579": {
+      "storeNo": "579",
+      "name": "K11",
+      "nameEn": "K11",
+      "region": "九龍",
+      "district": "尖沙咀",
+      "town": "九龍",
+      "address": "香港九龍尖沙咀K11地下G30號舖",
+      "hours": "星期一至六 11:30am - 8pm；星期日及公眾假期 11:30am - 8pm",
+      "geo": {
+        "lat": 22.297421,
+        "lng": 114.173102
+      },
+      "url": "/zh/store/wwhk_579_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null
+    },
+    "584": {
+      "storeNo": "584",
+      "name": "黃埔花園",
+      "nameEn": "Whampoa Garden",
+      "region": "九龍",
+      "district": "紅磡",
+      "town": "九龍",
+      "address": "香港九龍紅磡黃埔花園第十二期家居庭第一層地庫TASTE",
+      "hours": "星期一至日 11am - 7:30pm",
+      "geo": {
+        "lat": 22.305995,
+        "lng": 114.190725
+      },
+      "url": "/zh/store/wwhk_584_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null
+    },
+    "588": {
+      "storeNo": "588",
+      "name": "長江中心",
+      "nameEn": "CHEUNG KONG CENTRE",
+      "region": "港島",
+      "district": "中環",
+      "town": "港島",
+      "address": "香港中環長江中心B2層",
+      "hours": "星期一至五 11am - 7:30pm；星期六、日及公眾假期 11am - 7:30pm",
+      "geo": {
+        "lat": 22.279753,
+        "lng": 114.160234
+      },
+      "url": "/zh/store/wwhk_588_ZT?lat=22.277922&long=114.164843",
+      "firstSeen": "2026-10-29 16:18:52 +0800",
+      "lastSeen": "2026-10-30T04:12:57.469Z",
+      "removedAt": null
+    }
+  }
+}

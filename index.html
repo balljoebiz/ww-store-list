@@ -54,7 +54,17 @@ main { flex:1; min-width:0; }
 .links { display:flex; gap:.9rem; }
 .links a { color:var(--primary); font-size:.82rem; text-decoration:none; }
 .links a:hover { text-decoration:underline; }
-footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78rem; border-top:1px solid var(--border); padding-top:.7rem; }
+/* ── 店鋪生命週期狀態 ── */
+.store-card.is-removed { border:1px dashed #d9463f; background:repeating-linear-gradient(135deg,transparent,transparent 10px,rgba(217,70,63,.035) 10px,rgba(217,70,63,.035) 20px); }
+.badge-removed { background:#d9463f; color:#fff; font-size:.66rem; font-weight:700; padding:.1rem .4rem; border-radius:.25rem; white-space:nowrap; }
+.removed-note { font-size:.72rem; color:#d9463f; }
+.store-card.is-closed { opacity:.62; filter:grayscale(1); }
+.badge-closed { background:var(--muted); color:#fff; font-size:.66rem; font-weight:700; padding:.1rem .4rem; border-radius:.25rem; white-space:nowrap; }
+.index li.is-removed { opacity:.55; }
+.closed-section { margin-top:2.5rem; padding-top:1.25rem; border-top:2px dashed var(--border); }
+.closed-section h2 { font-size:1.1rem; color:var(--muted); margin-bottom:.35rem; }
+.closed-section .closed-hint { font-size:.78rem; color:var(--muted); margin-bottom:.75rem; }
+footer { max-width:1280px; margin:2rem auto 0; color:var(--muted); font-size:.78rem; border-top:1px solid var(--border); padding-top:.7rem; }
 @media (max-width:680px) { .cards { grid-template-columns:1fr; } }
 @media (max-width:900px) {
   .layout { display:block; }
@@ -66,7 +76,7 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
 <body>
 <header>
   <h1>屈臣氏酒窖 分店地址 <span class="en-title">Watsons Wine Store Finder</span></h1>
-  <div class="sub">資料來源：屈臣氏酒窖官方網站 store finder・資料更新：2026年10月29日・共 17 間分店</div>
+  <div class="sub">資料來源：屈臣氏酒窖官方網站 store finder・資料更新：2026年10月30日・現有 17 間・新增 17 間</div>
 </header>
 <div class="layout">
 <aside class="sidebar">
@@ -108,13 +118,14 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
   <button type="button" class="filter-reset" id="filter-reset">清除</button>
   <span class="filter-count" id="filter-count">顯示 17 間</span>
 </div>
-<section class="town"><h2>港島 <span class="en-title">Hong Kong Island</span> <span class="count">10</span></h2><div class="cards"><article id="store-507" class="store-card" data-town="港島" data-search="507 admiralty admiralty 香港金鐘太古廣場地庫great great food hall, level lg1, pacific place, 88 queensway, admiralty, hong kong admiralty admiralty">
+<section class="town"><h2>港島 <span class="en-title">Hong Kong Island</span> <span class="count">10</span></h2><div class="cards"><article id="store-507" class="store-card" data-town="港島" data-state="active" data-search="507 admiralty admiralty 香港金鐘太古廣場地庫great great food hall, level lg1, pacific place, 88 queensway, admiralty, hong kong 金鐘 admiralty">
   <div class="card-head">
     <span class="store-no">507</span>
     <div class="names">
       <div class="name-zh">Admiralty</div>
       <div class="name-en">Admiralty</div>
     </div>
+    
   </div>
   <dl class="fields">
     <div class="field">
@@ -128,18 +139,20 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <div class="field"><dt>電話</dt><dd><span class="zh">25262832</span></dd></div>
   </dl>
   <div class="tags"><span class="tag" title="WineTasting">WineTasting</span><span class="tag" title="ClickAndCollect">ClickAndCollect</span><span class="tag" title="InstoreOffer">InstoreOffer</span></div>
+  
   <div class="links">
     <a href="https://www.google.com/maps?q=22.277922,114.164843" target="_blank" rel="noopener">查看地圖</a>
     <a href="https://www.watsonswine.com/zh/store/wwhk_507_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article id="store-510" class="store-card" data-town="港島" data-search="510 causeway bay causeway bay 香港銅鑼灣恩平道28號利園二期地下g03號舖 shop no.g03, g/f, lee garden two, 28 yun ping road, causeway bay, hong kong causeway bay causeway bay">
+<article id="store-510" class="store-card" data-town="港島" data-state="active" data-search="510 causeway bay causeway bay 香港銅鑼灣恩平道28號利園二期地下g03號舖 shop no.g03, g/f, lee garden two, 28 yun ping road, causeway bay, hong kong 銅鑼灣 causeway bay">
   <div class="card-head">
     <span class="store-no">510</span>
     <div class="names">
       <div class="name-zh">Causeway Bay</div>
       <div class="name-en">Causeway Bay</div>
     </div>
+    
   </div>
   <dl class="fields">
     <div class="field">
@@ -153,18 +166,20 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <div class="field"><dt>電話</dt><dd><span class="zh">31517628</span></dd></div>
   </dl>
   <div class="tags"><span class="tag" title="InstoreOffer">InstoreOffer</span></div>
+  
   <div class="links">
     <a href="https://www.google.com/maps?q=22.278481,114.185829" target="_blank" rel="noopener">查看地圖</a>
     <a href="https://www.watsonswine.com/zh/store/wwhk_510_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article id="store-520" class="store-card" data-town="港島" data-search="520 park lane park lane 香港銅鑼灣告士打道310號柏寧酒店地下d3b號舖 shop no.d3b, g/f, style house, the park lane, 310 gloucester road, causeway bay, hong kong causeway bay causeway bay">
+<article id="store-520" class="store-card" data-town="港島" data-state="active" data-search="520 park lane park lane 香港銅鑼灣告士打道310號柏寧酒店地下d3b號舖 shop no.d3b, g/f, style house, the park lane, 310 gloucester road, causeway bay, hong kong 銅鑼灣 causeway bay">
   <div class="card-head">
     <span class="store-no">520</span>
     <div class="names">
       <div class="name-zh">PARK LANE</div>
       <div class="name-en">PARK LANE</div>
     </div>
+    
   </div>
   <dl class="fields">
     <div class="field">
@@ -178,18 +193,20 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <div class="field"><dt>電話</dt><dd><span class="zh">28956975</span></dd></div>
   </dl>
   <div class="tags"><span class="tag" title="InstoreOffer">InstoreOffer</span></div>
+  
   <div class="links">
     <a href="https://www.google.com/maps?q=22.281058,114.186537" target="_blank" rel="noopener">查看地圖</a>
     <a href="https://www.watsonswine.com/zh/store/wwhk_520_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article id="store-539" class="store-card" data-town="港島" data-search="539 century square century square 香港中環德己立街1-13號世紀廣場地庫3號舖 shop 3, lg/f, century square, 1-13 d&#39;aguilar street, central, hong kong central central">
+<article id="store-539" class="store-card" data-town="港島" data-state="active" data-search="539 century square century square 香港中環德己立街1-13號世紀廣場地庫3號舖 shop 3, lg/f, century square, 1-13 d&#39;aguilar street, central, hong kong 中環 central">
   <div class="card-head">
     <span class="store-no">539</span>
     <div class="names">
       <div class="name-zh">CENTURY SQUARE</div>
       <div class="name-en">CENTURY SQUARE</div>
     </div>
+    
   </div>
   <dl class="fields">
     <div class="field">
@@ -203,18 +220,20 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <div class="field"><dt>電話</dt><dd><span class="zh">25376998</span></dd></div>
   </dl>
   <div class="tags"><span class="tag" title="InstoreOffer">InstoreOffer</span></div>
+  
   <div class="links">
     <a href="https://www.google.com/maps?q=22.281529,114.15591" target="_blank" rel="noopener">查看地圖</a>
     <a href="https://www.watsonswine.com/zh/store/wwhk_539_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article id="store-588" class="store-card" data-town="港島" data-search="588 長江中心 cheung kong centre 香港中環長江中心b2層 portion of b2/f, cheung kong centre central central">
+<article id="store-588" class="store-card" data-town="港島" data-state="active" data-search="588 長江中心 cheung kong centre 香港中環長江中心b2層 portion of b2/f, cheung kong centre 中環 central">
   <div class="card-head">
     <span class="store-no">588</span>
     <div class="names">
       <div class="name-zh">長江中心</div>
       <div class="name-en">CHEUNG KONG CENTRE</div>
     </div>
+    
   </div>
   <dl class="fields">
     <div class="field">
@@ -228,18 +247,20 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <div class="field"><dt>電話</dt><dd><span class="zh">23424122</span></dd></div>
   </dl>
   <div class="tags"><span class="tag" title="ClickAndCollect">ClickAndCollect</span><span class="tag" title="InstoreOffer">InstoreOffer</span></div>
+  
   <div class="links">
     <a href="https://www.google.com/maps?q=22.279753,114.160234" target="_blank" rel="noopener">查看地圖</a>
     <a href="https://www.watsonswine.com/zh/store/wwhk_588_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article id="store-538" class="store-card" data-town="港島" data-search="538 ifc mall ifc mall 香港中環國際金融中心商場3樓3019號舖 shop no.3019, podium level three, ifc mall, 8 finance street, central, hong kong central central">
+<article id="store-538" class="store-card" data-town="港島" data-state="active" data-search="538 ifc mall ifc mall 香港中環國際金融中心商場3樓3019號舖 shop no.3019, podium level three, ifc mall, 8 finance street, central, hong kong 中環 central">
   <div class="card-head">
     <span class="store-no">538</span>
     <div class="names">
       <div class="name-zh">IFC MALL</div>
       <div class="name-en">IFC MALL</div>
     </div>
+    
   </div>
   <dl class="fields">
     <div class="field">
@@ -253,18 +274,20 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <div class="field"><dt>電話</dt><dd><span class="zh">25305002</span></dd></div>
   </dl>
   <div class="tags"><span class="tag" title="InstoreOffer">InstoreOffer</span></div>
+  
   <div class="links">
     <a href="https://www.google.com/maps?q=22.285189,114.158432" target="_blank" rel="noopener">查看地圖</a>
     <a href="https://www.watsonswine.com/zh/store/wwhk_538_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article id="store-516" class="store-card" data-town="港島" data-search="516 sheung wan sheung wan 香港上環德輔道中199號無限極廣場地下g06號舖 shop g06, g/f, infinitus plaza, 199 des voeux road central, sheung wan, hong kong sheung wan sheung wan">
+<article id="store-516" class="store-card" data-town="港島" data-state="active" data-search="516 sheung wan sheung wan 香港上環德輔道中199號無限極廣場地下g06號舖 shop g06, g/f, infinitus plaza, 199 des voeux road central, sheung wan, hong kong 上環 sheung wan">
   <div class="card-head">
     <span class="store-no">516</span>
     <div class="names">
       <div class="name-zh">Sheung Wan</div>
       <div class="name-en">Sheung Wan</div>
     </div>
+    
   </div>
   <dl class="fields">
     <div class="field">
@@ -278,18 +301,20 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <div class="field"><dt>電話</dt><dd><span class="zh">31580624</span></dd></div>
   </dl>
   <div class="tags"><span class="tag" title="InstoreOffer">InstoreOffer</span></div>
+  
   <div class="links">
     <a href="https://www.google.com/maps?q=22.286463,114.153689" target="_blank" rel="noopener">查看地圖</a>
     <a href="https://www.watsonswine.com/zh/store/wwhk_516_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article id="store-577" class="store-card" data-town="港島" data-search="577 cityplaza cityplaza 香港太古太古城道18號太古城中心2樓223號舖 shop 223, 2/f, cityplaza, 18 taikoo shing road, taikoo shing, hong kong taikoo shing taikoo shing">
+<article id="store-577" class="store-card" data-town="港島" data-state="active" data-search="577 cityplaza cityplaza 香港太古太古城道18號太古城中心2樓223號舖 shop 223, 2/f, cityplaza, 18 taikoo shing road, taikoo shing, hong kong 太古城 taikoo shing">
   <div class="card-head">
     <span class="store-no">577</span>
     <div class="names">
       <div class="name-zh">CITYPLAZA</div>
       <div class="name-en">CITYPLAZA</div>
     </div>
+    
   </div>
   <dl class="fields">
     <div class="field">
@@ -303,18 +328,20 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <div class="field"><dt>電話</dt><dd><span class="zh">31651590</span></dd></div>
   </dl>
   <div class="tags"><span class="tag" title="ClickAndCollect">ClickAndCollect</span><span class="tag" title="InstoreOffer">InstoreOffer</span></div>
+  
   <div class="links">
     <a href="https://www.google.com/maps?q=22.286268,114.217121" target="_blank" rel="noopener">查看地圖</a>
     <a href="https://www.watsonswine.com/zh/store/wwhk_577_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article id="store-519" class="store-card" data-town="港島" data-search="519 wanchai wanchai 香港灣仔港灣道1號會議廣場1樓102c號舖 shop 102c, 1/f, shopping arcade, convention plaza, 1 harbour road, wan chai, hong kong wan chai wan chai">
+<article id="store-519" class="store-card" data-town="港島" data-state="active" data-search="519 wanchai wanchai 香港灣仔港灣道1號會議廣場1樓102c號舖 shop 102c, 1/f, shopping arcade, convention plaza, 1 harbour road, wan chai, hong kong 灣仔 wan chai">
   <div class="card-head">
     <span class="store-no">519</span>
     <div class="names">
       <div class="name-zh">Wanchai</div>
       <div class="name-en">Wanchai</div>
     </div>
+    
   </div>
   <dl class="fields">
     <div class="field">
@@ -328,18 +355,20 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <div class="field"><dt>電話</dt><dd><span class="zh">31693150</span></dd></div>
   </dl>
   <div class="tags"><span class="tag" title="InstoreOffer">InstoreOffer</span></div>
+  
   <div class="links">
     <a href="https://www.google.com/maps?q=22.28114,114.173414" target="_blank" rel="noopener">查看地圖</a>
     <a href="https://www.watsonswine.com/zh/store/wwhk_519_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article id="store-505" class="store-card" data-town="港島" data-search="505 wanchai - hopewell centre wanchai - hopewell centre 香港灣仔皇后大道東183號合和中心3樓301-306號舖 shop 301-306, 3/f, hopewell centre, 183 queen&#39;s road east, wan chai, hong kong wan chai wan chai">
+<article id="store-505" class="store-card" data-town="港島" data-state="active" data-search="505 wanchai - hopewell centre wanchai - hopewell centre 香港灣仔皇后大道東183號合和中心3樓301-306號舖 shop 301-306, 3/f, hopewell centre, 183 queen&#39;s road east, wan chai, hong kong 灣仔 wan chai">
   <div class="card-head">
     <span class="store-no">505</span>
     <div class="names">
       <div class="name-zh">Wanchai - Hopewell Centre</div>
       <div class="name-en">Wanchai - Hopewell Centre</div>
     </div>
+    
   </div>
   <dl class="fields">
     <div class="field">
@@ -353,18 +382,20 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <div class="field"><dt>電話</dt><dd><span class="zh">31534491</span></dd></div>
   </dl>
   <div class="tags"><span class="tag" title="InstoreOffer">InstoreOffer</span></div>
+  
   <div class="links">
     <a href="https://www.google.com/maps?q=22.27471,114.171571" target="_blank" rel="noopener">查看地圖</a>
     <a href="https://www.watsonswine.com/zh/store/wwhk_505_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article></div></section>
-<section class="town"><h2>九龍 <span class="en-title">Kowloon</span> <span class="count">5</span></h2><div class="cards"><article id="store-584" class="store-card" data-town="九龍" data-search="584 黃埔花園 whampoa garden 香港九龍紅磡黃埔花園第十二期家居庭第一層地庫taste taste, b1/f, homeworld, site 12, whampoa garden, kowloon, hong kong hung hom hung hom">
+<section class="town"><h2>九龍 <span class="en-title">Kowloon</span> <span class="count">5</span></h2><div class="cards"><article id="store-584" class="store-card" data-town="九龍" data-state="active" data-search="584 黃埔花園 whampoa garden 香港九龍紅磡黃埔花園第十二期家居庭第一層地庫taste taste, b1/f, homeworld, site 12, whampoa garden, kowloon, hong kong 紅磡 hung hom">
   <div class="card-head">
     <span class="store-no">584</span>
     <div class="names">
       <div class="name-zh">黃埔花園</div>
       <div class="name-en">Whampoa Garden</div>
     </div>
+    
   </div>
   <dl class="fields">
     <div class="field">
@@ -378,18 +409,20 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <div class="field"><dt>電話</dt><dd><span class="zh">37469102</span></dd></div>
   </dl>
   <div class="tags"><span class="tag" title="InstoreOffer">InstoreOffer</span></div>
+  
   <div class="links">
     <a href="https://www.google.com/maps?q=22.305995,114.190725" target="_blank" rel="noopener">查看地圖</a>
     <a href="https://www.watsonswine.com/zh/store/wwhk_584_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article id="store-576" class="store-card" data-town="九龍" data-search="576 festival walk festival walk 香港九龍塘達之路80號又一城taste taste, festival walk, 80 tat chee avenue, kowloon tong, kowloon, hong kong kowloon tong kowloon tong">
+<article id="store-576" class="store-card" data-town="九龍" data-state="active" data-search="576 festival walk festival walk 香港九龍塘達之路80號又一城taste taste, festival walk, 80 tat chee avenue, kowloon tong, kowloon, hong kong 九龍塘 kowloon tong">
   <div class="card-head">
     <span class="store-no">576</span>
     <div class="names">
       <div class="name-zh">FESTIVAL WALK</div>
       <div class="name-en">FESTIVAL WALK</div>
     </div>
+    
   </div>
   <dl class="fields">
     <div class="field">
@@ -403,18 +436,20 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <div class="field"><dt>電話</dt><dd><span class="zh">36901239</span></dd></div>
   </dl>
   <div class="tags"><span class="tag" title="InstoreOffer">InstoreOffer</span></div>
+  
   <div class="links">
     <a href="https://www.google.com/maps?q=22.337615,114.174284" target="_blank" rel="noopener">查看地圖</a>
     <a href="https://www.watsonswine.com/zh/store/wwhk_576_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article id="store-533" class="store-card" data-town="九龍" data-search="533 apm apm 香港九龍觀塘觀塘道418號創紀之城5期apm低層地下5a號舖 shop 5a, lg/f, apm, millennium city 5, 418 kwun tong road, kwun tong, kowloon, hong kong kwun tong kwun tong">
+<article id="store-533" class="store-card" data-town="九龍" data-state="active" data-search="533 apm apm 香港九龍觀塘觀塘道418號創紀之城5期apm低層地下5a號舖 shop 5a, lg/f, apm, millennium city 5, 418 kwun tong road, kwun tong, kowloon, hong kong 觀塘 kwun tong">
   <div class="card-head">
     <span class="store-no">533</span>
     <div class="names">
       <div class="name-zh">APM</div>
       <div class="name-en">APM</div>
     </div>
+    
   </div>
   <dl class="fields">
     <div class="field">
@@ -428,18 +463,20 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <div class="field"><dt>電話</dt><dd><span class="zh">23427618</span></dd></div>
   </dl>
   <div class="tags"><span class="tag" title="InstoreOffer">InstoreOffer</span></div>
+  
   <div class="links">
     <a href="https://www.google.com/maps?q=22.312609,114.225324" target="_blank" rel="noopener">查看地圖</a>
     <a href="https://www.watsonswine.com/zh/store/wwhk_533_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article id="store-579" class="store-card" data-town="九龍" data-search="579 k11 k11 香港九龍尖沙咀k11地下g30號舖 shop g30, ground floor, k11, 18 hanoi road, tsim sha tsui, kowloon, hong kong tsim sha tsui tsim sha tsui">
+<article id="store-579" class="store-card" data-town="九龍" data-state="active" data-search="579 k11 k11 香港九龍尖沙咀k11地下g30號舖 shop g30, ground floor, k11, 18 hanoi road, tsim sha tsui, kowloon, hong kong 尖沙咀 tsim sha tsui">
   <div class="card-head">
     <span class="store-no">579</span>
     <div class="names">
       <div class="name-zh">K11</div>
       <div class="name-en">K11</div>
     </div>
+    
   </div>
   <dl class="fields">
     <div class="field">
@@ -453,18 +490,20 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <div class="field"><dt>電話</dt><dd><span class="zh">31224142</span></dd></div>
   </dl>
   <div class="tags"><span class="tag" title="InstoreOffer">InstoreOffer</span></div>
+  
   <div class="links">
     <a href="https://www.google.com/maps?q=22.297421,114.173102" target="_blank" rel="noopener">查看地圖</a>
     <a href="https://www.watsonswine.com/zh/store/wwhk_579_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article>
-<article id="store-536" class="store-card" data-town="九龍" data-search="536 ocean centre ocean centre 香港九龍尖沙咀海港城海洋中心3樓313a號舖 shop 313a, level 3, ocean centre, harbour city, 3-27 canton road, tsim sha tsui, kowloon, hong kong tsim sha tsui tsim sha tsui">
+<article id="store-536" class="store-card" data-town="九龍" data-state="active" data-search="536 ocean centre ocean centre 香港九龍尖沙咀海港城海洋中心3樓313a號舖 shop 313a, level 3, ocean centre, harbour city, 3-27 canton road, tsim sha tsui, kowloon, hong kong 尖沙咀 tsim sha tsui">
   <div class="card-head">
     <span class="store-no">536</span>
     <div class="names">
       <div class="name-zh">OCEAN CENTRE</div>
       <div class="name-en">OCEAN CENTRE</div>
     </div>
+    
   </div>
   <dl class="fields">
     <div class="field">
@@ -478,18 +517,20 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <div class="field"><dt>電話</dt><dd><span class="zh">2522 8893</span></dd></div>
   </dl>
   <div class="tags"><span class="tag" title="InstoreOffer">InstoreOffer</span></div>
+  
   <div class="links">
     <a href="https://www.google.com/maps?q=22.296341,114.168511" target="_blank" rel="noopener">查看地圖</a>
     <a href="https://www.watsonswine.com/zh/store/wwhk_536_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article></div></section>
-<section class="town"><h2>新界 <span class="en-title">New Territories</span> <span class="count">1</span></h2><div class="cards"><article id="store-511" class="store-card" data-town="新界" data-search="511 tung chung tung chung 新界大嶼山東涌達東路20號東薈城b1-b10號舖 shops b01-b10, basement level 1, citygate, 20 tat tung road, tung chung, lantau, hong kong tung chung tung chung">
+<section class="town"><h2>新界 <span class="en-title">New Territories</span> <span class="count">1</span></h2><div class="cards"><article id="store-511" class="store-card" data-town="新界" data-state="active" data-search="511 tung chung tung chung 新界大嶼山東涌達東路20號東薈城b1-b10號舖 shops b01-b10, basement level 1, citygate, 20 tat tung road, tung chung, lantau, hong kong 東涌 tung chung">
   <div class="card-head">
     <span class="store-no">511</span>
     <div class="names">
       <div class="name-zh">Tung Chung</div>
       <div class="name-en">Tung Chung</div>
     </div>
+    
   </div>
   <dl class="fields">
     <div class="field">
@@ -503,18 +544,20 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <div class="field"><dt>電話</dt><dd><span class="zh">35431395</span></dd></div>
   </dl>
   <div class="tags"><span class="tag" title="InstoreOffer">InstoreOffer</span></div>
+  
   <div class="links">
     <a href="https://www.google.com/maps?q=22.289845,113.94083" target="_blank" rel="noopener">查看地圖</a>
     <a href="https://www.watsonswine.com/zh/store/wwhk_511_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article></div></section>
-<section class="town"><h2>澳門 <span class="en-title">Macau</span> <span class="count">1</span></h2><div class="cards"><article id="store-572" class="store-card" data-town="澳門" data-search="572 澳門 – 氹仔 macau – taipa 澳門南灣大馬路759號1樓1007b室 (只供自取。如需送貨，請聯繫客戶服務) avenida da praia grande, 759, 1 andar, suite 1007b, macau (for pick-up only. for home delivery, please contact our cs) taipa taipa">
+<section class="town"><h2>澳門 <span class="en-title">Macau</span> <span class="count">1</span></h2><div class="cards"><article id="store-572" class="store-card" data-town="澳門" data-state="active" data-search="572 澳門 – 氹仔 macau – taipa 澳門南灣大馬路759號1樓1007b室 (只供自取。如需送貨，請聯繫客戶服務) avenida da praia grande, 759, 1 andar, suite 1007b, macau (for pick-up only. for home delivery, please contact our cs) 氹仔 taipa">
   <div class="card-head">
     <span class="store-no">572</span>
     <div class="names">
       <div class="name-zh">澳門 – 氹仔</div>
       <div class="name-en">MACAU – TAIPA</div>
     </div>
+    
   </div>
   <dl class="fields">
     <div class="field">
@@ -528,11 +571,13 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
     <div class="field"><dt>電話</dt><dd><span class="zh">853 2856 9594</span></dd></div>
   </dl>
   <div class="tags"><span class="tag" title="InstoreOffer">InstoreOffer</span></div>
+  
   <div class="links">
     <a href="https://www.google.com/maps?q=22.156834,113.556468" target="_blank" rel="noopener">查看地圖</a>
     <a href="https://www.watsonswine.com/zh/store/wwhk_572_ZT?lat=22.277922&amp;long=114.164843" target="_blank" rel="noopener">官方頁面</a>
   </div>
 </article></div></section>
+
 </main>
 </div>
 <footer>本頁資料自動抓取自屈臣氏酒窖官方網站，僅供參考；實際營業時間以官方為準。店名與地址為中英雙語，其餘欄位採用繁體中文頁資料。<span id="load-time"></span></footer>
@@ -542,7 +587,9 @@ footer { max-width:1100px; margin:2rem auto 0; color:var(--muted); font-size:.78
   var searchIn = document.getElementById('filter-search');
   var resetBtn = document.getElementById('filter-reset');
   var countEl = document.getElementById('filter-count');
-  var cards = Array.prototype.slice.call(document.querySelectorAll('.store-card'));
+  // 已閉店卡片位於頁底獨立區塊，不參與篩選
+  var allCards = Array.prototype.slice.call(document.querySelectorAll('.store-card'));
+  var cards = allCards.filter(function (c) { return c.getAttribute('data-state') !== 'closed'; });
   var towns = Array.prototype.slice.call(document.querySelectorAll('.town'));
   var indexItems = Array.prototype.slice.call(document.querySelectorAll('.index li'));
   var total = cards.length;
